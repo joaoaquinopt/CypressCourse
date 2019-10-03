@@ -39,6 +39,34 @@ describe('Our first suite', () => {
 
     })
 
+    it.only('find web elements', () => {
+
+        //cy.get('')
+        //cy.find('')
+        //cy.contains('')
+
+        cy.visit('/')
+        cy.contains('Forms').click()
+        cy.contains('Form Layouts').click()
+
+    //1. Add your own locator
+        cy.get('[data-cy="signin"]')
+
+    //2. Find by text
+        cy.contains('Sign in')
+
+     //3. Find By selector and text   
+        cy.contains('[status="warning"]','Sign in')
+
+     //4. Use unique "KEY" locator and travel through the DOM
+        cy.get('#inputEmail3').parents('form').find('button').should('contain', 'Sign in').parents('nb-card').find('nb-checkbox').click()
+    
+        cy.contains('nb-card', 'Horizontal form').find('[type="email"]')
+
+     //you CAN't call child command from the cy.   
+        cy.find('button')
+    })
+
 
 })
 
