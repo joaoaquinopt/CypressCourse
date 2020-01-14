@@ -1,11 +1,16 @@
 /// <reference types="cypress" />
 
+import { navigation } from "../support/page_objects/navigationPage"
+
 describe('Our first suite', () => {
 
-    it('first test', () => {
+    beforeEach('open application', () => {
         cy.visit('/')
-        cy.contains('Forms').click()
-        cy.contains('Form Layouts').click()
+    })
+
+    it('first test', () => {
+       
+        navigation.selectFormsLayoutsPage()
 
         //by Tag Name
         cy.get('input')
@@ -45,9 +50,7 @@ describe('Our first suite', () => {
         //cy.find('')
         //cy.contains('')
 
-        cy.visit('/')
-        cy.contains('Forms').click()
-        cy.contains('Form Layouts').click()
+        navigation.selectFormsLayoutsPage()
 
     //1. Add your own locator
         cy.get('[data-cy="signin"]')
@@ -69,9 +72,7 @@ describe('Our first suite', () => {
 
     it('then and wrap', () => {
 
-        cy.visit('/')
-        cy.contains('Forms').click()
-        cy.contains('Form Layouts').click()
+        navigation.selectFormsLayoutsPage()
 
         // cy.contains('nb-card', 'Using the Grid').find('[for="inputEmail1"]').should('contain', 'Email')
         // cy.contains('nb-card', 'Using the Grid').find('[for="inputPassword2"]').should('contain', 'Password')
@@ -108,9 +109,7 @@ describe('Our first suite', () => {
     })
 
     it('invoke command', () => {
-        cy.visit('/')
-        cy.contains('Forms').click()
-        cy.contains('Form Layouts').click()
+        navigation.selectFormsLayoutsPage()
 
 
         //1
@@ -175,9 +174,7 @@ describe('Our first suite', () => {
                 return dateAssert
             }
 
-        cy.visit('/')
-        cy.contains('Forms').click()
-        cy.contains('Datepicker').click()
+        navigation.selectFormsLayoutsPage()
 
         cy.contains('nb-card', 'Common Datepicker').find('input').then( input => {
             cy.wrap(input).click()
@@ -190,9 +187,7 @@ describe('Our first suite', () => {
     })
 
     it('radio button', () => {
-        cy.visit('/')
-        cy.contains('Forms').click()
-        cy.contains('Form Layouts').click()
+        navigation.selectFormsLayoutsPage()
 
         cy.contains('nb-card', 'Using the Grid').find('[type="radio"]').then( radioButtons => {
             cy.wrap(radioButtons)
@@ -215,9 +210,7 @@ describe('Our first suite', () => {
     })
 
     it('checkbox', () => {
-        cy.visit('/')
-        cy.contains('Modal & Overlays').click()
-        cy.contains('Toastr').click()
+        navigation.selectToasterPage()
 
         cy.get('[type="checkbox"]').eq(1).check({force: true})
         cy.get('[type="checkbox"]').eq(0).click({force: true})
@@ -225,7 +218,6 @@ describe('Our first suite', () => {
     })
 
     it('lists and dropdowns', () => {
-        cy.visit('/')
 
         //1
         // cy.get('nav nb-select').click()
@@ -258,9 +250,7 @@ describe('Our first suite', () => {
     })
 
     it('tables', () => {
-        cy.visit('/')
-        cy.contains('Tables & Data').click()
-        cy.contains('Smart Table').click()
+        navigation.selectSmartTablePage()
 
         //1 Update the table
         cy.get('tbody').contains('tr', 'Larry').then( tableRow => {
@@ -301,9 +291,7 @@ describe('Our first suite', () => {
     })
 
     it('pop up', () => {
-        cy.visit('/')
-        cy.contains('Tables & Data').click()
-        cy.contains('Smart Table').click()
+        navigation.selectSmartTablePage()
 
 
         //1
@@ -322,9 +310,7 @@ describe('Our first suite', () => {
     })
 
     it('tooltip' , () => {
-        cy.visit('/')
-        cy.contains('Modal & Overlays').click()
-        cy.contains('Tooltip').click()
+        navigation.selectTooltipPage()
 
         cy.contains('nb-card', 'Colored Tooltips')
             .contains('Default').click()
