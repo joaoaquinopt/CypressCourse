@@ -4,19 +4,34 @@ import { onDatepickerPage } from "../support/page_objects/datepickerPage"
 import { onSmartTablePage } from "../support/page_objects/smartTablePage"
 
 
+const runOn = (browser, fn) => {
+    if (Cypress.isBrowser(browser)) {
+      fn()
+    }
+  }
+  
+  const ignoreOn = (browser, fn) => {
+    if (!Cypress.isBrowser(browser)) {
+      fn()
+    }
+  }
+
 describe('tests with page objects', () => {
 
     beforeEach('open application', () => {
         cy.openHomePage()
     })
 
-    it('verify navigation across the pages', () => {
-        navigateTo.formsLayoutsPage()
-        navigateTo.datepickerPage()
-        navigateTo.toasterPage()
-        navigateTo.smartTablePage()
-        navigateTo.tooltipPage()
+    ignoreOn('firefox', () => {
+        it('verify navigation across the pages', () => {
+            navigateTo.formsLayoutsPage()
+            navigateTo.datepickerPage()
+            navigateTo.toasterPage()
+            navigateTo.smartTablePage()
+            navigateTo.tooltipPage()
+        })
     })
+    
 
     it('should submit Inline and Basic form and select the tomorrow date in the calendar', () => {
         navigateTo.formsLayoutsPage()
