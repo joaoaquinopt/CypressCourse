@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    tools {nodejs "node"}
+
+    stages {
+        stage('Dependencies') {
+            steps {
+                sh 'npm i'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm run start'
+            }
+        }
+        stage('Cypress test') {
+            steps {
+                sh 'npm run cy:run_spec'
+            }
+        }
+        
+    }
+}
