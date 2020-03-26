@@ -6,7 +6,7 @@ pipeline {
 //     }
 //   }
 
-    agen any
+    agent any
 
     tools {nodejs "node"}
 
