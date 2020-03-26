@@ -6,10 +6,6 @@ pipeline {
 
   stages {
     stage('cypress parallel tests') {
-    //   environment {
-    //     CYPRESS_RECORD_KEY = 'b39799f2-48a2-4800-8df4-669f686c1520'
-    //     CYPRESS_trashAssetsBeforeRuns = 'false'
-    //   }
 
       parallel {
         stage('tester A') {
@@ -19,9 +15,12 @@ pipeline {
         }
 
         stage('tester B') {
-          steps {
-            sh "npm run cy:run"
-          }
+            node('mac'){
+                steps {
+                 sh "npm run cy:run"
+                }
+            }    
+          
         }
       }
 
