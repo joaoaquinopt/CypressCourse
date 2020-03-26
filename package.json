@@ -13,7 +13,7 @@
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
     "start": "ng serve",
-    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
+    "start:ci": "ng serve --no-clipboard --listen ${PORT:-8080}",
     "build": "ng build",
     "build:prod": "npm run build -- --prod --aot",
     "test": "ng test",
