@@ -54,7 +54,7 @@ describe('Our first suite', () => {
         navigateTo.formsLayoutsPage()
 
     //1. Add your own locator
-        cy.get('[data-cy="signin"]')
+    //    cy.get('[data-cy="signin"]')
 
     //2. Find by text
         cy.contains('Sign in')
