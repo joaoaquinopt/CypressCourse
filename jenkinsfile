@@ -12,7 +12,7 @@ pipeline {
 
         stage('Cypress test') {
             steps {
-                sh 'npm run cy:run_p'
+                sh 'npm run cypress:e2e'
             }
         }
         
