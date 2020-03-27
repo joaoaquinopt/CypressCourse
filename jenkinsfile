@@ -14,7 +14,7 @@ pipeline {
           }
         }
 
-        stage('tester A') {
+        stage('tester A_1') {
           steps {
             sh "npm run cy:run"
           }
