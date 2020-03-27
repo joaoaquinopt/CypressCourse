@@ -14,7 +14,22 @@ pipeline {
           }
         }
 
+        stage('tester A_1') {
+          steps {
+            sh "npm run cy:run"
+          }
+        }
+
         stage('tester B') {
+            agent{
+                label "mac"
+            }
+            steps {
+                sh "npm run cy:run"
+            }   
+        }
+
+        stage('tester B_1') {
             agent{
                 label "mac"
             }
