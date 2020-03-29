@@ -3,6 +3,6 @@
   "ignoreTestFiles": "**/examples/*",
   "viewportHeight": 1080,
   "viewportWidth": 1920,
-  "video": true,
+  "video": false,
   "projectId": "voxmj9"
 }
