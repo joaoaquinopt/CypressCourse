@@ -4,5 +4,9 @@
   "viewportHeight": 1080,
   "viewportWidth": 1920,
   "video": false,
-  "projectId": "voxmj9"
+  "projectId": "voxmj9",
+  "component": {
+    "componentFolder": "src/app",
+    "testFiles": "**/*spec.jsx"
+  }
 }
