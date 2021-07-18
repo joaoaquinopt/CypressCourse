@@ -13,7 +13,7 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.js$/,
-        loader: 'source-map-loader',
+        use: 'source-map-loader',
       },
       {
         test: /\.ts$/,
@@ -33,8 +33,10 @@ module.exports = {
       },
       {
         test: /\.(js|ts)$/,
-        loader: 'istanbul-instrumenter-loader',
-        options: { esModules: true },
+        use: {
+          loader: 'istanbul-instrumenter-loader',
+          options: { esModules: true },
+        },
         enforce: 'post',
         include: path.join(__dirname, '../..', 'src'),
         exclude: [
@@ -51,7 +53,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'raw-loader',
+        use: 'raw-loader',
       },
       {
         test: /(\.scss|\.sass)$/,
@@ -59,36 +61,32 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'raw-loader',
+        use: 'raw-loader',
         exclude: [path.join(__dirname, '../../src/index.html')],
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        loader: 'file-loader?name=assets/images/[name].[ext]',
+        use: 'file-loader?name=assets/images/[name].[ext]',
       },
       {
         test: /\.(mp4|webm|ogg)$/i,
-        loader: 'file-loader?name=assets/videos/[name].[ext]',
+        use: 'file-loader?name=assets/videos/[name].[ext]',
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader:
-          'file-loader?limit=10000&mimetype=image/svg+xml&name=assets/svgs/[name].[ext]',
+        use: 'file-loader?limit=10000&mimetype=image/svg+xml&name=assets/svgs/[name].[ext]',
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        loader:
-          'file-loader?prefix=font/&limit=5000&name=assets/fonts/[name].[ext]',
+        use: 'file-loader?prefix=font/&limit=5000&name=assets/fonts/[name].[ext]',
       },
       {
         test: /\.(woff|woff2)$/,
-        loader:
-          'file-loader?prefix=font/&limit=5000&name=assets/fonts/[name].[ext]',
+        use: 'file-loader?prefix=font/&limit=5000&name=assets/fonts/[name].[ext]',
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader:
-          'file-loader?limit=10000&mimetype=application/octet-stream&name=assets/fonts/[name].[ext]',
+        use: 'file-loader?limit=10000&mimetype=application/octet-stream&name=assets/fonts/[name].[ext]',
       },
     ],
   },
@@ -103,14 +101,5 @@ module.exports = {
   ],
   performance: {
     hints: false,
-  },
-  node: {
-    global: true,
-    crypto: 'empty',
-    process: false,
-    module: false,
-    clearImmediate: false,
-    setImmediate: false,
-    fs: 'empty',
   },
 };

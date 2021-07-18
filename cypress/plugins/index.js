@@ -11,7 +11,8 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-import * as webpackConfig from './webpack.config';
+// import * as webpackConfig from './webpack.config';
+const webpackConfig = require('./webpack.config');
 const { startDevServer } = require('@cypress/webpack-dev-server');
 
 module.exports = (on, config) => {
