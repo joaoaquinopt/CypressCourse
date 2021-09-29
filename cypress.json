@@ -7,6 +7,6 @@
   "projectId": "voxmj9",
   "component": {
     "componentFolder": "src/app",
-    "testFiles": "**/*spec.jsx"
+    "testFiles": "**/*cy-spec.ts"
   }
 }
